@@ -2,14 +2,17 @@ class Station
   attr_accessor :station_name
 
   def initialize(station_name = "NewStation")
+    #нет проверки существует ли уже станция с таким именем, хотя возможно это будет в последующих заданиях, 
+    #либо реализуй это когда пройдешь классовые переменные и исключения
     @station_name = station_name
     @station_train = []
-    @pass = "pass"
+    @pass = "pass" #вместо @gruz & @pass следует использовать константы
     @gruz = "gruz"
   end
 
 #Принимать поезда
   def station_take(train)
+     # нет проверки, есть ли уже этот поезд на станции
     @station_train << train
     puts "На станцию #{station_name} прибыл поезд #{train.train_number}"
   end
@@ -17,13 +20,13 @@ class Station
 #отправка поезда
   def station_send(train)
     @station_train.delete(train)
-    puts "Со станции #{station_name} убыл поезд #{train}"
+    puts "Со станции #{station_name} убыл поезд #{train}" #если поезда небыло на станции, всеравно будет выводится что он убыл
   end
 
 #Отобразить поезда на танции
 
   def station_train
-    puts "На станции #{station_name} находятся следующие поезда:"
+    puts "На станции #{station_name} находятся следующие поезда:" #а если поездов нет?
 
     @station_train.each do |tr|
       puts "#{tr.train_number} \n"
@@ -32,6 +35,7 @@ class Station
   end
 
   def station_train_type(type = nil)
+    # раздутый метод, см. Array.select
     if (type == @pass) or (type == @gruz)
       if (type == @pass)
         puts "На станции #{station_name} стоят пассажирские поезда с номерами: "
