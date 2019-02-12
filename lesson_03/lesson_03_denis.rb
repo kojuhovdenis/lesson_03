@@ -1,6 +1,8 @@
 class Station
 
   def initialize(station_name)
+    #нет проверки существует ли уже станция с таким именем, хотя возможно это будет в последующих заданиях, 
+    #либо реализуй это когда пройдешь классовые переменные и исключения
     @station_name = station_name
     @list_train = []
   end
@@ -8,33 +10,37 @@ class Station
   attr_reader :station_name
 
   #Показать список поездов
-  def show_list_train(train_type = 0)
+  def show_list_train(train_type = 0) #где вывод по типу поезда?
+    # можно реализоваь проще, см Array.select
+    puts "Список поездов на станции #{@station_name}:" #а если поездов нет?
 
-    puts "Список поездов на станции #{@station_name}:"
-
-    for index in (0..@list_train.count - 1)
+    for index in (0..@list_train.count - 1) #вместо for следовало использовать each, т.е. @list_train.each
       puts " - #{@list_train[index]}"
     end
   end
 
   #Принять поезд
-  def take_train(new_train = "noname")
-    @list_train.append(new_train)
+  def take_train(new_train = "noname") #под new_train подразуммевается экзкмпляр класса Train, а тут по дефолту строка, что в корне неверно.
+    # к тому же вернее будет указать название переменной просто train
+    # нет проверки, есть ли уже этот поезд на станции
+    @list_train.append(new_train) #есть более короткая запись @list_train << new_train
     puts "Поезд #{new_train} прибыл на платформу"
   end
 
   #Отправить поезд
-  def send_train(sender_train = "noname")
+  def send_train(sender_train = "noname") #тоже самое что и выше
     @list_train.delete(sender_train)
-    puts "Отправляется поезд #{sender_train}"
+    puts "Отправляется поезд #{sender_train}" #если поезда небыло на станции, всеравно будет выводится что он убыл
   end
 
 end
 
 class Route
 
-  def initialize(start_station, finish_station)
-    @start_station = start_station
+  def initialize(start_station, finish_station) #можно обойтись одним массивом содержащим в себе все станции, 
+    #а новые добовлять например перед конечной станцией, такой подход сократит кол-во когда при необходимости пройти по все станциям, но для начала сойдет
+    #нет проверки разниые ли start_station и finish_station, получается можно создать маршрут в котором будет начальной и конечной одна и та же станция
+    @start_station = start_station 
     @finish_station = finish_station
     @middle_stations = []
   end
@@ -43,8 +49,8 @@ class Route
   attr_reader :finish_station
   attr_reader :middle_stations
 
-  def add_station(added_station)
-
+  def add_station(added_station) #приставка added лишняя, из названия метода уже понятно назначение принимаемой переменной
+    #нет проверки на наличие добовляемой станции в маршруте, получается одну и ту же стацию можно добавить много раз
     # @middle_stations.append(added_station)
     @middle_stations << added_station
 
@@ -59,7 +65,7 @@ class Route
     puts "Список станций маршрута:"
 
     puts " - start: #{@start_station.station_name}"
-    for index in (0..@middle_stations.count - 1)
+    for index in (0..@middle_stations.count - 1)  #@middle_stations.each
       puts " - middle: #{@middle_stations[index].station_name}"
     end
     puts " - finish: #{@finish_station.station_name}"
@@ -87,17 +93,17 @@ class Train
   end
 
   def up_speed
-    @speed += 10
+    @speed += 10 #использовать "магические числа" плохой тон, следует использовать константу, например SPPED_STEP и присваивать ее
   end
 
-  def down_speed
-    if speed > 0 then
+  def down_speed #если в будующем появится метод который устанавливает произвольную скорость то скорость может оказаться отрицательной
+    if speed > 0 then #можно записать короче @speed -= 10 if speed > 0
       @speed -= 10
     end
   end
 
   def current_speed
-    puts "Current speed train №#{@number}: #{@speed} km/h"
+    puts "Current speed train №#{@number}: #{@speed} km/h" #сообщения то на русском, то на английском, определись
   end
 
   def show_amount_vagon
@@ -128,7 +134,7 @@ class Train
 
   def set_route(new_route)
     @current_route = new_route
-    @current_station = new_route.start_station
+    @current_station = new_route.start_station #а вдруг на передали не экземпляр класса Route? тогда тут программа упадет, так на будующее 
     @current_index_middle_station = -1
   end
 
