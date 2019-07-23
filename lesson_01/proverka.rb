@@ -3,4 +3,8 @@ puts("tru-la-la")
 
 puts("dddd#{@dddd}")
 
+#fdsfsdfds
+#проверка как печатается в VSCode
+
+puts("Good! #{@ddd}")
 
