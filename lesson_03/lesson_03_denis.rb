@@ -1,3 +1,4 @@
+#проверка комментирования класса
 class Station
 
   def initialize(station_name)
