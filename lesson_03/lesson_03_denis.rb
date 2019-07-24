@@ -1,7 +1,7 @@
 #проверка комментирования класса
 class Station
 
-  #dd
+  #ddffffdsfsdfsdf
   def initialize(station_name)
     @station_name = station_name
     @list_train = []
