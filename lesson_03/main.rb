@@ -1,16 +1,16 @@
-include_relative station.rb
-include_relative train.rb
-include_relative route.rb
+require_relative ('station.rb')
+require_relative ('train.rb')
+require_relative ('route.rb')
 
 #Create stations
-st_SaintPetersburg = Station.new("Moscowsky vokzal (Saint-Petersburg)")
-st_Leningradsky = Station.new("Leningradsky vokzal (Moscow)")
-st_Rizhskiy = Station.new("Rizhskiy vokzal (Moscow)")
-st_Kievskiy = Station.new("Kievskiy vokzal (Moscow)")
-st_Mineralnae = Station.new("Mineralnae vody")
-st_Pashkovka = Station.new("Pashkovka (Krasnodar)")
-st_Krasnodar1 = Station.new("Krasnodar-1")
-st_Adler = Station.new("Adler")
+st_SaintPetersburg  = Station.new("Moscowsky vokzal (Saint-Petersburg)")
+st_Leningradsky     = Station.new("Leningradsky vokzal (Moscow)")
+st_Rizhskiy         = Station.new("Rizhskiy vokzal (Moscow)")
+st_Kievskiy         = Station.new("Kievskiy vokzal (Moscow)")
+st_Mineralnae       = Station.new("Mineralnae vody")
+st_Pashkovka        = Station.new("Pashkovka (Krasnodar)")
+st_Krasnodar1       = Station.new("Krasnodar-1")
+st_Adler            = Station.new("Adler")
 
 #Create route MSC-KRD
 route_krd1 = Route.new(st_Rizhskiy, st_Adler)
@@ -31,7 +31,7 @@ route_msc1 = Route.new(st_Leningradsky, st_SaintPetersburg)
 
 #Create train
 train_Lastochka = Train.new(8980077, 1, 8)
-train_Sapsan = Train.new(8777777, 1, 5)
+train_Sapsan    = Train.new(8777777, 1, 5)
 
 
 #Сапсан
