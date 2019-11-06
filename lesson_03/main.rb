@@ -12,7 +12,7 @@ st_Pashkovka        = Station.new("Pashkovka (Krasnodar)")
 st_Krasnodar1       = Station.new("Krasnodar-1")
 st_Adler            = Station.new("Adler")
 
-#Create route MSC-KRD
+#Create route MSC-KRD  DDD
 route_krd1 = Route.new(st_Rizhskiy, st_Adler)
 route_krd1.add_station(st_Mineralnae)
 route_krd1.add_station(st_Pashkovka)
