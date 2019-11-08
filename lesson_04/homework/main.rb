@@ -3,14 +3,14 @@ require_relative 'route'
 require_relative 'train'
 
 #Create stations
-st_SaintPetersburg = Station.new("Moscowsky vokzal (Saint-Petersburg)")
-st_Leningradsky = Station.new("Leningradsky vokzal (Moscow)")
-st_Rizhskiy = Station.new("Rizhskiy vokzal (Moscow)")
-st_Kievskiy = Station.new("Kievskiy vokzal (Moscow)")
-st_Mineralnae = Station.new("Mineralnae vody")
-st_Pashkovka = Station.new("Pashkovka (Krasnodar)")
-st_Krasnodar1 = Station.new("Krasnodar-1")
-st_Adler = Station.new("Adler")
+st_SaintPetersburg 	= Station.new("Moscowsky vokzal (Saint-Petersburg)")
+st_Leningradsky     = Station.new("Leningradsky vokzal (Moscow)")
+st_Rizhskiy 		    = Station.new("Rizhskiy vokzal (Moscow)")
+st_Kievskiy 		    = Station.new("Kievskiy vokzal (Moscow)")
+st_Mineralnae 	    = Station.new("Mineralnae vody")
+st_Pashkovka 		    = Station.new("Pashkovka (Krasnodar)")
+st_Krasnodar1 	    = Station.new("Krasnodar-1")
+st_Adler 			      = Station.new("Adler")
 
 #Create route MSC-KRD
 route_krd1 = Route.new(st_Rizhskiy, st_Adler)
@@ -57,7 +57,6 @@ puts train_Lastochka.current_route.show_list_station
 puts " - текущая станция #{train_Lastochka.current_station.station_name}"
 train_Lastochka.set_next_station
 puts " - текущая станция #{train_Lastochka.current_station.station_name}"
-
 puts " -------------------------- "
 
 puts " - объявление, следующая станция #{train_Lastochka.get_next_station.station_name}"
