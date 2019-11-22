@@ -60,6 +60,8 @@ class Train
     @current_route = new_route
     @current_station = new_route.start_station
     @current_index_middle_station = -1
+
+    @current_station.take_train(self)
   end
 
   def get_next_middle_station(ref_current_route)

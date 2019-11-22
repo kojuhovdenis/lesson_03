@@ -27,6 +27,10 @@ class Station
     @list_train.each { |current_train| puts " - #{current_train}" }
   end
 
+  def get_amount_trains
+    @list_train.size
+  end
+
   def take_train(new_train = 'noname')
     @list_train.append(new_train)
     puts "Поезд #{new_train} прибыл на платформу"
